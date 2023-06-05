@@ -3,6 +3,7 @@ import datetime
 import pytz
 
 from dateutil import parser
+from typing import Optional 
 
 from telegram import Update
 
@@ -214,7 +215,7 @@ def unset(update: Update, context: CallbackContext) -> None:
     update.message.reply_text(text)
 
 
-def convert_venezuela_utc(time: str) -> str | None:
+def convert_venezuela_utc(time: str) -> Optional[str]:
     try:
         utc_time = parser.parse(time)
 
