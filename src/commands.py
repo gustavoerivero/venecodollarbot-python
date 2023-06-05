@@ -20,6 +20,7 @@ menu = """
 
 
 def start(update: Update, context: CallbackContext) -> None:
+    print("/start command applying")
     update.message.reply_text(
         text=f"¡Hola! A continuación te muestro las cosas que puedo hacer:\n{menu}\nAsí que dime, ¿qué puedo hacer por ti?",
         parse_mode='Markdown'
@@ -27,6 +28,7 @@ def start(update: Update, context: CallbackContext) -> None:
 
 
 def help_command(update: Update, context: CallbackContext) -> None:
+    print("/help command applying")
     update.message.reply_text(
         text=menu,
         parse_mode='Markdown'
@@ -34,6 +36,7 @@ def help_command(update: Update, context: CallbackContext) -> None:
 
 
 def dollar(update: Update, context: CallbackContext) -> None:
+    print("/dolar command applying")
     try:
         data = get_dollar()
         message = "*Valores del dólar:*\n"
@@ -56,6 +59,7 @@ def dollar(update: Update, context: CallbackContext) -> None:
 
 
 def entity(update: Update, context: CallbackContext) -> None:
+    print("/fuente command applying")
     try:
         entity_name = update.message.text.split()[1]
         data = get_entities(entity=entity_name)
@@ -92,6 +96,7 @@ def entity(update: Update, context: CallbackContext) -> None:
 
 
 def unknown_command(update: Update, context: CallbackContext) -> None:
+    print("unknown command applying")
     command = update.message.text
     update.message.reply_text(
         text=f"El comando '{command}' es desconocido. Por favor, utiliza los comandos disponibles.\n\nSi deseas conocer los comandos disponibles, utiliza /help.",
@@ -100,6 +105,7 @@ def unknown_command(update: Update, context: CallbackContext) -> None:
 
 
 def set_timer(update: Update, context: CallbackContext) -> None:
+    print("/avisos command applying")
     chat_id = update.effective_message.chat_id
     try:
         job_removed = remove_job_if_exists(str(chat_id), context)
@@ -127,6 +133,7 @@ def set_timer(update: Update, context: CallbackContext) -> None:
 
 
 def unset(update: Update, context: CallbackContext) -> None:
+    print("/remover command applying")
     try:
         chat_id = update.message.chat_id
         job_removed = remove_job_if_exists(str(chat_id), context)
