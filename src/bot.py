@@ -1,13 +1,17 @@
+import requests
+
 from telegram.ext import Updater, CommandHandler, PrefixHandler, MessageHandler, filters
 from os import getenv
 from dotenv import load_dotenv
 
 from src.commands import start, dollar, entity, set_timer, unset, help_command, unknown_command
-
+from src.webhook import set_webhook
 
 def bot() -> None:
 
     try:
+
+        set_webhook()
 
         load_dotenv()
 
